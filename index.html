@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<!--very important meta tag for launching @media query in all devices with their actual width--> 
+		<meta id="viewport" name="viewport" content ="width=device-width" />
+		<title>Hangman Words | Get The Missed Word</title>
+		<link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    
+    	<div id="container">
+    	
+			<div id="info">
+				<div id="name">Hangman Words</div>
+				<div id="word">The Word from : <span></span></div>
+			</div>
+ 			
+ 			<hr>
+  			
+   			<div id="data">
+   			
+   				<div class="draw-container">
+   					<div id="draw">
+   						<div id="stand"></div>
+   						<div id="hang"></div>
+   						<div id="rope"></div>
+   						<div id="hangman">
+   							<div id="head"></div>
+   							<div id="body"></div>
+   							<div id="hands"></div>
+   							<div id="legs"></div>
+   						</div>
+   					</div>
+   				</div>
+   				
+   				<div class="letters"></div>
+   				
+   			</div>
+   			
+   			<hr>
+   			
+    		<div class="guess"></div>
+    		<button id="button">Try Another Word ?</button>
+    
+		</div>
+		
+		<footer>
+			<span>&#64; All Copyrights are reserved 2020</span>
+			<p>Developed by _ <span>HaWaRy</span>_</p>
+		</footer>
+    	
+    	<audio id="success" src="audios/success.wav"></audio>
+    	<audio id="win"     src="audios/winner.mp3"></audio>
+    	<audio id="fail"    src="audios/fail.mp3" ></audio>
+    	<audio id="lose"    src="audios/lose.wav" ></audio>
+    	<script src="script.js"></script>
+	</body>
+</html>

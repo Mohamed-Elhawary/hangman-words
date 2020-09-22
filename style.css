@@ -1,0 +1,393 @@
+/*E91E63 >>green
+  F8F8F8 >> between black and blue
+*/
+* {
+	box-sizing: border-box
+}
+
+body {
+	font-family: arial
+}
+
+hr {
+	border: 1px solid #eee;
+}
+
+#container {
+	margin: 30px auto;
+	width: 1000px;
+}
+
+#container #info {
+	display: flex;
+	background-color: beige;
+	padding: 20px;
+	border: 2px solid #eee;
+	border-radius: 20px;
+	margin-bottom: 20px
+}
+
+#container #name {
+	flex:1;
+	font-weight: bold;
+	font-size: 20px;
+	color: brown
+}
+
+#container #word {
+	flex: 1;
+	font-weight: bold;
+	font-size: 20px;
+	border-left: 5px solid #989292;
+	padding-left: 40px
+}
+
+#container #word span {
+	color: brown;
+	text-transform: capitalize
+}
+
+#container #data {
+	display: flex;
+	margin: 20px auto;
+}
+
+#container #data .draw-container {
+	flex: 1;
+	background-color: #f0efeb
+}
+
+#container #data .draw-container #draw {
+	width: 60px;
+	height: 330px;
+	border-bottom: 4px solid #222;
+	position: relative;
+	left: 170px;
+	display: none;
+}
+
+#container #data .draw-container #draw #stand {
+	height: 295px;
+	width: 4px;
+	background-color: #222;
+	position: absolute;
+	left: 25px;
+	top: 35px;
+	display: none
+}
+
+#container #data .draw-container #draw #hang {display: none}
+
+#container #data .draw-container #draw #hang::before {
+	content: "";
+	width: 80px;
+	height: 4px;
+	background-color: #222;
+	position: absolute;
+	top: 35px;
+	left: 27px
+}
+
+#container #data .draw-container #draw #hang::after {
+	content: "";
+	width: 4px;
+	height: 60px;
+	background-color: #222;
+	position: absolute;
+	top: 35px;
+	left: 103px
+}
+
+#container #data .draw-container #draw #rope {
+	width: 80px;
+	height: 80px;
+	border: 4px dashed #222;
+	border-radius: 50%;
+	position: absolute;
+	top: 90px;
+	left: 64px;
+	display: none
+}
+
+#container #data .draw-container #draw #hangman #head {
+	width: 50px;
+	height: 50px;
+	border: 4px solid #222;
+	border-radius: 50%;
+	position: absolute;
+	top: 105px;
+	left: 78px;
+	display: none
+}
+
+#container #data .draw-container #draw #hangman #body {
+	width: 4px;
+	height: 120px;
+	background-color: #222;
+	position: absolute;
+	top: 150px;
+	left: 101px;
+	display: none
+}
+
+#container #data .draw-container #draw #hangman #hands{display: none}
+#container #data .draw-container #draw #hangman #legs {display: none}
+
+#container #data .draw-container #draw #hangman #hands::before,
+#container #data .draw-container #draw #hangman #hands::after, 
+#container #data .draw-container #draw #hangman #legs::before,
+#container #data .draw-container #draw #hangman #legs::after {
+	content: "";
+	height: 60px;
+	width: 4px;
+	background-color: #222;
+	position: absolute;
+	top: 180px
+}
+
+#container #data .draw-container #draw #hangman #hands::before {
+	transform: rotate(-30deg);
+	left: 86px
+}
+
+#container #data .draw-container #draw #hangman #hands::after {
+	transform: rotate(30deg);
+	left: 116px
+} 
+
+#container #data .draw-container #draw #hangman #legs::before {
+	transform: rotate(30deg);
+	left: 87px;
+	top: 263px;
+}
+
+#container #data .draw-container #draw #hangman #legs::after {
+	transform: rotate(-30deg);
+	left: 117px;
+	top: 263px
+}
+
+
+#container #data .draw-container.wrong-no1 #draw                 {display: block}
+#container #data .draw-container.wrong-no2 #draw #stand          {display: block}
+#container #data .draw-container.wrong-no3 #draw #hang           {display: block}
+#container #data .draw-container.wrong-no4 #draw #rope           {display: block}
+#container #data .draw-container.wrong-no5 #draw #hangman #head  {display: block}
+#container #data .draw-container.wrong-no6 #draw #hangman #body  {display: block}
+#container #data .draw-container.wrong-no7 #draw #hangman #hands {display: block}
+#container #data .draw-container.wrong-no8 #draw #hangman #legs  {display: block}
+
+
+
+
+#container #data .letters {
+	flex: 1;
+	background-color: #f0efeb;
+	margin-left: 10px;
+	padding: 20px;
+	text-align: center
+}
+
+#container .letters.unclickable {
+	pointer-events: none
+}
+
+#container #data .letters span.box {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	border: 2px solid #fff;
+	color: #fff;
+	background-color: #2a9d8f;
+	text-transform: capitalize;
+	margin-left: 8px;
+	margin-bottom: 8px;
+	font-weight: bold;
+	line-height: 60px;
+	font-size: 24px;
+	user-select: none;
+	box-shadow: 2px 2px 2px #ccc
+}
+
+#container #data .letters span.box:hover {
+	cursor: pointer;
+	background-color: #fff;
+	color: #02c39a;
+	border: 2px solid #02c39a
+}
+
+#container #data .letters span.box.clicked {
+	pointer-events: none;
+	background-color: #ccc;
+	color: #02c39a;
+	border: 2px solid #02c39a;
+	opacity: .6
+}
+
+#container .guess {
+	background: #F8F8F8;
+	display: flex;
+	min-height: 110px;
+	padding: 30px;
+	border-radius: 20px;
+	justify-content: center;
+	
+}
+
+#container .guess span {
+	width: 70px;
+	height: 80px;
+	margin-left: 5px;
+	background-color: #FDFDFD;
+	color: #222;
+	border-bottom: 2px solid #222;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 35px;
+	text-align: center;
+	line-height: 60px;
+	text-transform: uppercase;
+	user-select: none;
+}
+
+#container .guess span.space {
+	border-bottom: 0px;
+	background: none;
+	position: relative
+}
+
+#container .guess span.space::before {
+	content: "";
+	background-color: #222;
+	width: 15px;
+	height: 2px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%)
+}
+
+#button {
+	width: 160px;
+	margin: 20px auto;
+	display: block;
+	height: 40px;
+	font-weight: bold;
+	background-color: #2a9d8f;
+	color: #fff;
+	box-shadow: 2px 2px 2px #222;
+	border: 2px solid #ccc;
+	border-radius: 20px;
+	user-select: none;
+	cursor: pointer;
+	outline: none
+}
+
+#button:hover {
+	background-color: #fff;
+	color: #2a9d8f;
+}
+
+.lose-game, .win-game {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: beige;
+	opacity: .6;
+	z-index: 2;
+}
+
+.try-again,
+.you-lose, 
+.word,
+.play-again,
+.you-win {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 150px;
+	height: 40px;
+	text-align: center;
+	padding: 20px;
+	border: 2px solid #222;
+	color: #fff;
+	background-color: brown;
+	cursor: pointer;
+	user-select: none;
+	padding: 10px;
+	border-radius: 20px;
+	font-weight: bold;
+	box-shadow: 2px 2px 2px #ccc;
+	outline: none;
+}
+
+.you-lose, .word, .you-win {
+	cursor: none;
+	width: 340px;
+	height: 40px;
+	top: 30%
+}
+
+.word {
+	top: 40%;
+	background-color: 2a9d8f
+}
+
+.try-again:hover {
+	background-color: #fff;
+	color: brown
+}
+
+.you-win {
+	top: 40%;
+	background-color: green;
+	font-weight: bold;
+}
+
+.play-again {
+	background-color: green
+}
+
+.play-again:hover {
+	background-color: #fff;
+	color: green
+}
+
+footer {
+	margin: 20px auto;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: brown;
+	padding: 5px
+}
+
+footer p {
+    margin-top: 8px;
+}
+
+footer p span {
+    background-color: black;
+    padding: 2px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/*responsive*/
+
+@media (min-width: 100px) and (max-width: 1100px) {
+    .lose-game,
+    .win-game {
+		width: 400%;
+		height: 180%;
+    };
+}
+
+@media (min-width: 100px) and (max-width: 1000px) {
+    footer {
+         transform: translate(90%, 20%)
+    };
+}
