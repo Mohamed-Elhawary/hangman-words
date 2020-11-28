@@ -2,8 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7ed41aa7-704c-424b-8c0d-32595424b278/deploy-status)](https://app.netlify.com/sites/hangmanwords/deploys)  
 
-Hangman Words is a Game App. depends on how you can complete the Missed Word before your Tries are finished that means the Hangman is dead.
-  
+Hangman Words is a game application that depends on how you can complete the missed word before your tries are finished which means that the hangman is dead.  
+
 ![Screenshot](preview_2.png)
 
 ## Demo and How to Interact  
